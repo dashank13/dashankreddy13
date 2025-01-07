@@ -1,0 +1,21 @@
+class Solution {
+private:
+    const int MOD = 1337;
+
+    int modPow(int x, int n) {
+        x %= MOD;
+        int result = 1;
+        for (int i = 0; i < n; ++i) {
+            result = (result * x) % MOD;
+        }
+        return result;
+    }
+
+public:
+    int superPow(int a, vector<int>& b) {
+        if (b.empty()) return 1;
+        int lastDigit = b.back();
+        b.pop_back();
+        return modPow(superPow(a, b), 10) * modPow(a, lastDigit) % MOD;
+    }
+};
