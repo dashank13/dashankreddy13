@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findNthDigit(int n) {
+        // Determine the range of numbers that contains the n-th digit
+        long long digit_count = 1;
+        long long range_count = 9;
+        long long start = 1;
+
+        while (n > digit_count * range_count) {
+            n -= digit_count * range_count;
+            digit_count++;
+            range_count *= 10;
+            start *= 10;
+        }
+
+        // Determine the exact number and digit
+        start += (n - 1) / digit_count;
+        string number = to_string(start);
+        return number[(n - 1) % digit_count] - '0';
+    }
+};
