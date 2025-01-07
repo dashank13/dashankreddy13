@@ -1,0 +1,11 @@
+class Solution {
+public:
+    vector<int> grayCode(int n) {
+        vector<int> result;
+        int num_codes = 1 << n; // 2^n Gray codes
+        for (int i = 0; i < num_codes; i++) {
+            result.push_back(i ^ (i >> 1)); // Generating Gray code
+        }
+        return result;
+    }
+};
