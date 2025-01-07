@@ -1,0 +1,16 @@
+class Solution {
+public:
+    string convertToBase7(int num) {
+        if (num == 0) return "0";
+        string base7 = "0123456";
+        string result = "";
+        bool isNegative = num < 0;
+        unsigned int n = abs(num);
+        while (n > 0) {
+            result = base7[n % 7] + result;
+            n /= 7;
+        }
+        if (isNegative) result = "-" + result;
+        return result;
+    }
+};
